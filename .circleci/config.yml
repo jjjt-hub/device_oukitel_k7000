@@ -7,7 +7,7 @@ jobs:
       - restore_cache:
           keys:
             - python3.6
-      - run: bash -c "[ ! -d python3.6_src ] && mkdir && curl https://www.python.org/ftp/python/3.6.10/Python-3.6.10.tgz | tar -xz -C python3.6_src"
+      - run: bash -c "[ ! -d python3.6_src ] && mkdir python3.6_src && curl https://www.python.org/ftp/python/3.6.10/Python-3.6.10.tgz | tar -xz -C python3.6_src"
       - run: bash -c "cd python3.6_src && ./configure --prefix=~/bin && make -j 4 && make install"
       - save_cache:
           key: python3.6
