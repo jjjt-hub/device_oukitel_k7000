@@ -29,4 +29,13 @@ jobs:
       - checkout:
           path: /tmp/checkout
       - run: mv /tmp/checkout/* device
-      - run: echo finish
+      - run: docker pull fr3akyphantom/droid-builder:latest
+      - run: docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "$(pwd):/home/builder/:rw,z" fr3akyphantom/droid-builder bash << EOF
+      - cd /home/builder/
+      - source build/envsetup.sh
+      - # Choose build flavor as "eng" or "userdebug"
+      - BUILD_FLAVOR="eng"
+      - lunch omni_k7000-${BUILD_FLAVOR}
+      - make -j$(nproc --all) recoveryimage
+      - exit
+      - EOF
