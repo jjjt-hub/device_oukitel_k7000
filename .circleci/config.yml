@@ -1,10 +1,9 @@
 version: 2.1
 jobs:
   build:
-    machine:
-      image: 'ubuntu-1604:201903-01'
+    docker:
+      - image: python3.6
     steps:
-      - run: sudo bash -c "yes | add-apt-repository ppa:jonathonf/python-3.6 && apt-get update && apt-get install -y python3.6"
       - run: curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
       - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
       - restore_cache:
