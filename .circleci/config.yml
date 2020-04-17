@@ -7,13 +7,13 @@ jobs:
       - restore_cache:
           keys:
             - python3.6
-      - run: bash -c "[ ! -d python3.6_src ] && mkdir python3.6_src && curl https://www.python.org/ftp/python/3.6.10/Python-3.6.10.tgz | tar -xz -C python3.6_src"
+      - run: bash -c "[ ! -d python3.6_src ] && mkdir python3.6_src && curl https://www.python.org/ftp/python/3.6.10/Python-3.6.10.tgz | tar -xz -C python3.6_src" || echo "Schon vorhanden"
       - run: bash -c "cd python3.6_src/Python-3.6.10; ls && pwd; ./configure && make -j 4 && sudo make install"
       - save_cache:
           key: python3.6
           paths:
             - python3.6_src
-      - run: bash -c "[ ! -d ~/bin ] && mkdir ~/bin"
+      - run: bash -c "[ ! -d ~/bin ] && mkdir ~/bin" || echo "Schon vorhanden"
       - run: curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
       - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
       - restore_cache:
