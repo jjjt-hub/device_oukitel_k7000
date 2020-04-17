@@ -13,7 +13,8 @@ jobs:
           key: python3.6
           paths:
             - python3.6_src
-      - run: mkdir ~/bin && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
+      - run: [ ! -d ~/bin ] && mkdir ~/bin
+      - run: curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
       - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
       - restore_cache:
           keys:
