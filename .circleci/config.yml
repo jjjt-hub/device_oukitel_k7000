@@ -4,7 +4,7 @@ jobs:
     machine:
       image: 'ubuntu-1604:201903-01'
     steps:
-      - run: sudo apt-get -y install repo
+      - run: sudo curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo && sudo chmod +x /usr/bin/repo
       - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
       - restore_cache:
           keys:
