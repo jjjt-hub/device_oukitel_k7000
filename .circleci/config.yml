@@ -5,11 +5,11 @@ jobs:
       - image: python:3.6
     steps:
       - run: mkdir ~/bin && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
-      - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
+      - run: ~/bin/repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
       - restore_cache:
           keys:
            - android-repo-cache
-      - run: repo sync
+      - run: ~/bin/repo sync
       - save_cache:
           key: android-repo-cache
           paths:
