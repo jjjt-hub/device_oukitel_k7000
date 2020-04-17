@@ -12,8 +12,8 @@ before_install:
 
 before_script:
   - cd $HOME/android
-  - repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -b pie
-  - repo sync -f --force-sync --no-clone-bundle
+  - repo init -uy https://github.com/ResurrectionRemix/platform_manifest.git -b pie
+  - repo sync -fy --force-sync --no-clone-bundle
   - cp $TRAVIS_BUILD_DIR/* .
 
 script:
