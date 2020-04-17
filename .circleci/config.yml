@@ -27,6 +27,6 @@ jobs:
           paths:
             - .repo/
       - checkout:
-		path: /tmp/checkout
+	  path: /tmp/checkout
       - run: mv /tmp/checkout/* device
       - run: echo finish
