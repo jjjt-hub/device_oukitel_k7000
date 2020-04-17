@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: python:3.6
     steps:
-      - run: curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
+      - run: mkdir ~/bin && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod +x ~/bin/repo && export PATH=~/bin:$PATH
       - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
       - restore_cache:
           keys:
