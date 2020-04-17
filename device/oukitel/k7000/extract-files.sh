@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DEVICE=K6000Pro
+export DEVICE=k7000
 export VENDOR=oukitel
 
 if [ $# -eq 0 ]; then
