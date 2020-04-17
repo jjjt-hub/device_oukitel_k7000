@@ -7,6 +7,7 @@ services:
 
 before_install:
   - docker pull fr3akyphantom/droid-builder:latest
+  - apt-get update && apt-get -y install repo
   - cd $HOME && mkdir android
 
 before_script:
@@ -17,8 +18,15 @@ before_script:
 
 script:
   - cd $HOME/android
-  - . build/envsetup.sh && brunch k7000
-  - make recoveryimage
+  - docker run --rm -i -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) -v "$(pwd):/home/builder/:rw,z" fr3akyphantom/droid-builder bash << EOF
+    cd /home/builder/
+    source build/envsetup.sh
+    # Choose build flavor as "eng" or "userdebug"
+    BUILD_FLAVOR="eng"
+    lunch omni_k7000-${BUILD_FLAVOR}
+    make -j$(nproc --all) recoveryimage
+    exit
+    EOF
 
 deploy:
   strategy: git
