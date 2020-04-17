@@ -21,7 +21,7 @@ jobs:
       - restore_cache:
           keys:
            - android-repo-cache
-      - run: repo sync
+      - run: repo sync -f -q --force-sync --no-clone-bundle
       - save_cache:
           key: android-repo-cache
           paths:
