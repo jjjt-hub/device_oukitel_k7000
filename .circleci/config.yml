@@ -26,6 +26,7 @@ jobs:
           key: android-repo-cache
           paths:
             - .repo/
-      - checkout: path: /tmp/checkout
+      - checkout:
+		path: /tmp/checkout
       - run: mv /tmp/checkout/* device
       - run: echo finish
