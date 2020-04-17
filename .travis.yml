@@ -7,7 +7,7 @@ services:
 
 before_install:
   - docker pull fr3akyphantom/droid-builder:latest
-  - apt-get update && apt-get -y install repo
+  - sudo apt-get update && sudo apt-get -y install repo
   - cd $HOME && mkdir android
 
 before_script:
