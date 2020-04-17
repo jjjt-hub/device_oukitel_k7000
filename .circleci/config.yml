@@ -1,0 +1,18 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: 'ubuntu-1604:201903-01'
+    steps:
+      - run: sudo apt-get -y install repo
+      - run: repo init -u https://github.com/ResurrectionRemix/platform_manifest.git -q -b pie
+      - restore_cache:
+          keys:
+           - android-repo-cache
+      - run: repo sync
+      - save_cache:
+          key: android-repo-cache
+          paths:
+            - .repo/
+      - checkout
+      - run: echo "Hello world!"
