@@ -8,7 +8,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 $(call inherit-product-if-exists, vendor/oukitel/k7000/k7000-vendor.mk)
 
-PRODUCT_NAME := rr_k7000
+PRODUCT_NAME := lineage_k7000
 PRODUCT_DEVICE := k7000
 PRODUCT_BRAND := oukitel
 PRODUCT_MANUFACTURER := oukitel
